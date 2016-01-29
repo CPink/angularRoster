@@ -1,4 +1,4 @@
-<html ng-app="roster">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -11,42 +11,50 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
+<body ng-app="roster">
 
-    <div class="bar bar-header bar-calm item-input-inset">
-        <div class="row">
-        <button class=" col button icon-left ion-chevron-left button-clear button-dark">Exit</button>
-            <div class="col col-75">
+    <div class="bar bar-header bar-balanced item-input-inset">
+        <div class="col">   
+        <button class="icon ion-social-angular button-clear button-dark"></button>
+        </div>
+            <div class="col col-50">
                 <label class="item-input-wrapper">
                     <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Search">
+                    <input type="search" placeholder="Look up player">
                 </label>
             </div>
         </div>
-        <button class="button button-clear">
-            Cancel
-        </button>
     </div>
-    <div ng-include src="'header.html'"></div>
 
     <ui-view></ui-view>
 
-    <div class="bar bar-footer bar-calm">
+    <div class="bar bar-footer bar-balanced">
         <button class="button button-outline icon-right ion-navicon button-dark">Rosters</button>
         <div class="title">My Fantasy Roster</div>
         <button class="button icon-left ion-chevron-left button-clear button-dark">Exit</button>
     </div>
 
-    <!-- ionic -->
-    <script src="bower_components/ionic/release/js/ionic.bundle.js"></script>
-    <!--<script src="bower_components/ionic/ionc-angular.min.js"></script>-->
-
+    
+    <!-- Angular -->
+    <script src="bower_components/angular/angular.js"></script>
+    
     <!-- angularfire -->
-    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
 
     <!-- firebase -->
     <script src="bower_components/firebase/firebase.js"></script>
+    
+    
+     <!-- ionic -->
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
 
+    <!-- app.js -->
+    <script src="app/app.js"></script>
+    
+    <!-- main -->
+    <script src="app/components/main/mainController.js"></script>
+    <script src="app/components/main/mainService.js"></script>
+    <script src="app/components/main/main.html"></script>
 
 </body>
 
