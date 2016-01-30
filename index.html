@@ -14,16 +14,16 @@
 <body ng-app="roster">
 
     <div class="bar bar-header bar-balanced item-input-inset">
-        <div class="col">   
-        <button class="icon ion-social-angular button-clear button-dark"></button>
+        <div class="col">
+            <button class="icon ion-social-angular button-clear button-dark"></button>
         </div>
-            <div class="col col-50">
-                <label class="item-input-wrapper">
-                    <i class="icon ion-ios-search placeholder-icon"></i>
-                    <input type="search" placeholder="Look up player">
-                </label>
-            </div>
+        <div class="col col-50">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Look up player">
+            </label>
         </div>
+    </div>
     </div>
 
     <ui-view></ui-view>
@@ -34,28 +34,28 @@
         <button class="button icon-left ion-chevron-left button-clear button-dark">Exit</button>
     </div>
 
-    
-    <!-- Angular -->
-    <script src="bower_components/angular/angular.js"></script>
-    
-    <!-- angularfire -->
-    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+
+    <!-- ionic -->
+    <script src="bower_components/ionic/release/js/ionic.bundle.js"></script>
+
 
     <!-- firebase -->
     <script src="bower_components/firebase/firebase.js"></script>
-    
-    
-     <!-- ionic -->
-    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <!-- angularfire -->
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
 
     <!-- app.js -->
     <script src="app/app.js"></script>
-    
+
     <!-- main -->
     <script src="app/components/main/mainController.js"></script>
     <script src="app/components/main/mainService.js"></script>
     <script src="app/components/main/main.html"></script>
 
+    <!-- login -->
+    <script src="app/components/login/loginController.js"></script>
+    <script src="app/components/login/loginService.js"></script>
+    <script src="app/components/login/login.html"></script>
 </body>
 
 </html>
