@@ -9,42 +9,61 @@
 
 
     function loginService(FirebaseUrl, $rootScope) {
-        var vm = this;
 
         var firebase = FirebaseUrl;
 
         var rosterLog = new Firebase(firebase);
-        vm.register = function (user) {
-            rosterLog.createUser({
-                email: user.email,
-                password: user.password
+        
+        this.login = function (user, cb) {
+		rosterLog.authWithPassword({
+			username: user.username,
+			email: user.email,    //Email and Password come from our login form
+			password: user.password
+		}, function (err, authData) {
 
-            }, function (error, userData) {
-                if (error) {
-                    console.log("Error creating user:", error);
-                } else {
-                    console.log("Successfully created user account with uid:", userData.uid);
-                }
-            })
+			if (err) {
+				switch (err.code) {
+					case "INVALID_EMAIL":
+					// handle an invalid email
+					case "INVALID_PASSWORD":
+					// handle an invalid password
+					default:
+				}
+			} else if (authData) {
+				// user authenticated with Firebase
+				console.log("Logged In! User ID: " + authData.uid);// + " " + user.username);
+				cb(authData); //gives the authenticated user to our callback
+			}
+		});
+	}
 
-            vm.login = function (user, cb) {
-                rosterLog.authWithPassword(function(err, authData){
-                    if(authData){
-                        authData.user = user || {};
-                        authData.user.email = user.email;
-                        authData.user.password = user.password;
-                        
-                        user.timestamp = Date.now();
-                        
-                        rosterLog.child('user').child(authData.user.email).set(authData);
-                        rosterLog.child('password').child(authData.user.password).set(authData);  
-                        cb(authData);                      
-                    }else{
-                        console.log('Something went wrong');
-                        cb(authData);
-                    }
-                })
-            }
+
+        this.register = function (user, cb) {
+		rosterLog.createUser({
+			email: user.email,
+			password: user.password
+		}, function (error) {
+
+			if (!error) {
+				console.log("User created successfully");
+				rosterLog.authWithPassword({
+					email: user.email,
+					password: user.password
+				}, function (err, authData) {
+					if (authData) {
+						authData.username = user.username;
+						authData.timestamp = Date.now();
+						rosterLog.child('users').child(authData.uid).set(authData);
+						cb(authData);
+					} else {
+						console.log('something went wrong');
+					}
+				});
+			} else {
+				console.log("Error creating user:", error);
+				return false;
+			}
+		});
         }
     }
 })();

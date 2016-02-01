@@ -1,19 +1,35 @@
-<div class="card" ng-submit="loginCtrl.register(loginCtrl.user)">
-    <div class="item item-divider">
-        I'm a Header in a Card!
-    </div>
-    <div class="item item-text-wrap">
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Email</span>
-            <input type="text" placeholder="Email" ng-model="loginCtrl.user.email">
-        </label>
-        <br>
-        <label class="item item-input item-floating-label">
-            <span class="input-label">Password</span>
-            <input type="text" placeholder="Last Name" ng-model="loginCtrl.user.password">
-        </label>
-    </div>
-    <div class="item item-divider">
-        <button type="submit" class="button icon-right ion-home">Login</button>
+<div>
+    <div class="card" ng-submit="loginCtrl.login(loginCtrl.user)">
+        <div class="item item-divider">
+            I'm a Header in a Card!
+        </div>
+        <div class="item item-text-wrap">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="text" placeholder="Email" ng-model="loginCtrl.user.email">
+            </label>
+            <br>
+            <div class="card card-clean">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Password</span>
+        <input type="text"
+                ng-show="showPasswordIsChecked"
+                placeholder="Enter password"
+                ng-model="loginCtrl.user.password"
+                required ng-pattern="/[\w\d]{3,15}/i"
+                ng-focus="onPasswordFocus()"
+                ng-blur="onPasswordBlur()">
+        <input type="password"
+                ng-show="!showPasswordIsChecked"
+                placeholder="Enter password"
+                name="senha"
+                ng-model="loginCtrl.user.password">
+      </label>
+</div>
+        </div>
+        <div class="item item-divider">
+            <button type="submit" ng-click="loginCtrl.login(loginCtrl.user)" class="button icon-right ion-home">Login</button>
+        </div>
     </div>
 </div>

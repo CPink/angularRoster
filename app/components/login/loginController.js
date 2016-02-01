@@ -10,17 +10,30 @@
     function loginController($scope, $state, loginService) {
         var vm = this;
 
-        vm.register = function (user) {
-            loginService.register(user, function (authData) {
-                if (authData) {
-                var user = authData;
-                return user;
-                }
-            })
-        }
-        
-        vm.login = function(user){
-            loginService.login(vm.register);  
-        }
+        vm.login = function () {
+            return loginService.login(vm.user, function (user) {
+
+                $state.go('main')
+
+            });
+        };
+
+        vm.register = function () {
+            return loginService.register(vm.user, function (user) {
+
+                $state.go('main')
+
+            });
+        };
+
+        // vm.status = 'Register';
+        // vm.showReg = function () {
+        //     if (vm.status === 'Register') {
+        //         vm.status = 'Login';
+        //     } else {
+        //         vm.status = 'Register';
+        //     }
+        //     vm.reg = !vm.reg;
+        // };
     }
 })();

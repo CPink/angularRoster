@@ -48,12 +48,12 @@
                     templateUrl: 'app/components/card/card.html'
                 })
 
-                .state('rosters', {
-                    url: '/rosters',
-                    controller: 'rosterController',
-                    controllerAs: 'rosterCtrl',
-                    templateUrl: 'app/rosters/rosters.html'
-                })
+                // .state('rosters', {
+                //     url: '/rosters',
+                //     controller: 'rosterController',
+                //     controllerAs: 'rosterCtrl',
+                //     templateUrl: 'app/rosters/roster.html'
+                // })
 
             $urlRouterProvider.otherwise('/');
         })
